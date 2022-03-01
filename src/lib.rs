@@ -1,3 +1,20 @@
+//setup
+//rustup target add wasm32-unknown-unknown (to add WASM target to the toolchain)
+//cargo init --lib (default file structure to create a rust contract)
+
+//testing
+//cargo test -- --nocapture
+
+//compile to create WASM (only for mac and linux)
+//env 'RUSTFLAGS=-C link-arg=-s' 
+//cargo build --target wasm32-unknown-unknown --release
+
+//deploying
+//near login
+//near create-account CONTRACT_NAME.ACCOUNT_ID --masterAcount ACCOUNT_ID (to create a account for the contract)
+//near deploy --wasmFile target/wasm32-unknown-unknown/release/key_value_storage.wasm --accountId CONTRACT_ID  (actual deployment)
+
+
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::{env, near_bindgen};
 
